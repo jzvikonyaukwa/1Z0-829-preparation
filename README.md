@@ -1,4 +1,5 @@
 # Java SE 17 Developer
+I forked these repositories to include additional features that I believe are necessary to pass the Java SE 17 Developer certification.
 Preparation for exam: Java SE 17 Developer  
 Exam Number: 1Z0-829
 
