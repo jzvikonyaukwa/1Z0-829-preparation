@@ -134,3 +134,20 @@ Remember that a backslash (**\\**) means to skip the line break.
 ### Escape sequences
 There are two special escape sequences for Text Blocks. 
 These allow fine-grained control of the processing of line breaks and whitespaces: `\` (followed by a line break) and `\s`.
+
+### Text Block Comparison with String
+```java
+    String str1 = """
+                  Hello World""";
+       
+    String str2 = "Hello World";
+    System.out.println(str1.equals(str1));  //true
+```
+```java
+String str3 = """
+              Hello World
+              """;
+
+        String str4 = "Hello World";
+     System.out.println(str3.equals(str4)); //false
+```   
