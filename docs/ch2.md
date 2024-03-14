@@ -7,7 +7,7 @@ void dangerousCast() {
     int[][] array = {{1,2,3}, {2}};
     //keep in mind that int[] is an object;
     Object[] arrObj = array;
-    //compiles but exception at runtime
+    //compiles but exception at runtime.
     //Exception in thread "main" java.lang.ArrayStoreException: java.lang.String
     arrObj[0] = "hello";
 }
