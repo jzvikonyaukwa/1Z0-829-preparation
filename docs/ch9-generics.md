@@ -73,11 +73,8 @@ public static void invokePrintMessage() {
 
 ```java
 List<? extends Number> listOfInteger = new ArrayList<>();
-//does not compile...what if it's a list of AtomicInteger
-//listOfInteger.add(new Integer(3));  
-
-//does not compile...what if it's a list of Integer
-//listOfInteger.add(new AtomicInteger(2)); 
+listOfInteger.add(new Integer(3));  //does not compile...what if it's a list of AtomicInteger
+listOfInteger.add(new AtomicInteger(2)); //does not compile...what if it's a list of Integer
 ```
 We cannot add an element to a list declared s upper bounded wildcards!
 
@@ -86,15 +83,14 @@ We cannot add an element to a list declared s upper bounded wildcards!
 List<? super IOException> exceptions = new ArrayList<Exception>();
 exceptions.add(new IOException("error"));// yes we can add it
 exceptions.add(new FileNotFoundException("error"));// yes we can add it
-
-//we cannot add an Exception as it could be a list of IOException and Exception is not an IOException
-//exceptions.add(new Exception("error"));
+exceptions.add(new Exception("error"));//we cannot add an Exception as it could be a list of IOException and Exception is not an IOException
 ```
 On the right side, the element should be a type whose super-class is defined as super at left side.
 
 ```java
 //List<? super IOException> ioExceptions = new ArrayList<FileNotFoundException>();  //does NOT compile
 List<? super IOException> ioExceptions = new ArrayList<Exception>();  //compiles
+List<? extends IOException> ioExceptions = new ArrayList<Exception>();  //does not compiles - Exception does not extends IOException
 
 ```
 
@@ -103,9 +99,9 @@ List<? super IOException> ioExceptions = new ArrayList<Exception>();  //compiles
 - listExtends is immutable
 - listSuper is mutable
 ```java
-    List<?> wildcardList = new ArrayList<String>();  
-    List<? extends IOException> listExtends = new ArrayList<FileNotFoundException>();
-    List<? super IOException> listSuper = new ArrayList<Object>();
+    List<?> wildcardList = new ArrayList<String>();//Immutable
+    List<? extends IOException> listExtends = new ArrayList<FileNotFoundException>();//Immutable
+    List<? super IOException> listSuper = new ArrayList<Object>(); //mutable
 ```
 
 [Example wildcard](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/CollectionsOfGenericsWithWildcard.java)
@@ -125,6 +121,12 @@ List<? super IOException> ioExceptions = new ArrayList<Exception>();  //compiles
   
   //lower-bounded
   Cage<? super Pet> lowerBounded2 = new Cage<Pet>(); 
+```
+```java
+  class Cage<T super Pet> {} //does not compile
+  class Cage<?> {} //does not compile
+
+ 
 ```
 [Classes With Lower and Upper Bounded](../src/main/java/org/enricogiurin/ocp17/book/ch9/generics/ClassesWithWildcards.java)
 

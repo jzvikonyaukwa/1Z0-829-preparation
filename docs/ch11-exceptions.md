@@ -1,5 +1,6 @@
-# Exceptions
+    # Exceptions
 ## Overview
+![exception_examples.png](images/exception_examples.png)
 ### What to catch when try catch is empty
 ```java
   void catchError() {
@@ -41,7 +42,27 @@
     }catch (IOException e) {}  //DOES NOT COMPILE!  
   }
 ```
+```java
+// Compiles
+try{
+    
+        }
+catch (ArithmeticException | NullPointerException e){
+
+  }
+```
+```java
+// Does Not Compiles
+//Types in multi-catch must be disjoint: 'java.lang.ArithmeticException' is a subclass of 'java.lang.Exception'
+try{
+    
+        }
+catch (ArithmeticException | Exceprtion e){
+
+  }
+```
 [CatchExceptions](../src/main/java/org/enricogiurin/ocp17/book/ch11/exceptions/CatchMethodWithThrows.java)
+
 
 ### Throws
 A method can declare an exception even if it's not thrown within the method itself.

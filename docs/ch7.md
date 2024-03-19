@@ -174,6 +174,8 @@ A subclass (Male) of a sealed class (HumanBeing) must be marked either `final` o
 _Named Module_: which allow sealed classes and their direct subclasses in different packages, 
 provided they are in the same named module.
 
+### Unnamed Modules
+_Unnamed Module_: which allow sealed classes and their direct subclasses provided they are in the same package.
 ## Final
 ```java
 final class AFinal {

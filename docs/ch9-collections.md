@@ -16,11 +16,21 @@ System.out.println(list); //["bb', "cb"]
 ## Immutable Collections
 ```java
 List<String> list = List.of("a", "b");
-Set<String> set = Set.of("a", "b");  //accepts a vararg
+Set<String> set = Set.of("a", "b");  //accepts a vararg - dublicate values are not allowed, as you will have runtime exception (IllegalArgumentException)
 List<String> listCopyOf = List.copyOf(list);  //accepts a Collection
 List<String> listCopyOfSet = List.copyOf(set);
 Set<String> setCopyOf = Set.copyOf(set);
 Set<String> setCopyOfList = Set.copyOf(list);
+Map<String,Integer> map =Map.of("a",1,"b",2); //dublicate keys are not allowed, as you will have runtime exception (IllegalArgumentException)
+Map<String,Integer> map2 = Map.ofEntries(Map.entry("a",1),Map.entry("b",1));
+Map<String,Integer> map3 =Map.copyOf(map);
+```
+
+## Collections of Fixed sizes
+
+```java
+List<String> list = Arrays.asList("a", "b"); // you can change the values, but can not add new values.
+//you can sort an array of fixed size
 ```
 ### Sorting an immutable collection
 ```java
@@ -33,7 +43,7 @@ Collections.sort(list);
 ## TreeSet
 ````java
 Comparator<Integer> comparator = (n1,n2)->n1-n2;
-TreeSet<Integer> set1 = new TreeSet<>(comparator);
+TreeSet<Integer> set1 = new TreeSet<>(comparator);// it uses the Comparator to sort the Set.
 TreeSet<Integer> set2 = new TreeSet<>(Set.of(1, 2, 3));
 ````
 
@@ -161,7 +171,7 @@ map.merge(1, 4, (v1, v2)->v1+v2);  //[1,4]
 [MapMerge](../src/main/java/org/enricogiurin/ocp17/book/ch9/map/MapMerge.java)
 
 ### TreeMap
-Keys added to `TreeMap` need to implement `Comparable`, as less as a `Comparator` is provided.  
+Keys added to `TreeMap` need to implement `Comparable`, unless  a `Comparator` is provided.  
 
 [Usage Of TreeMap](../src/main/java/org/enricogiurin/ocp17/book/ch9/map/UsageOfTreeMap.java)
 ```java

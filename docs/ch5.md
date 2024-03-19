@@ -55,7 +55,7 @@ class B extends A {
     
     A b2 = new B();
     //THIS DOES NOT COMPILE!
-    //b2.hello();  
+    b2.hello();  
   }
 }
 ```
@@ -68,7 +68,7 @@ Then it does not compile!
 ```java
 var result = Long.parseLong("17")
 //result is a primitive long
-//System.out.println(result.toString()); //does not compile
+System.out.println(result.toString()); //does not compile
 ```
 ### valueOf
 ```java
@@ -85,7 +85,8 @@ void print(double d);
 void print(Float f);
 
 //caller
-print(2F); //this calls the method print(double d)
+print(2f); //this calls the method print(double d)
+print(2.00); //this calls the method print(double d)
 
 ```
 [Overloading primitives](../src/main/java/org/enricogiurin/ocp17/book/ch5/overloading/MethodMatchingOverloading.java)
