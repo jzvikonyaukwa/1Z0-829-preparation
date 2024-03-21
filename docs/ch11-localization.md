@@ -69,14 +69,14 @@ System.out.print(NumberFormat.getCurrencyInstance()
 In Java, a locale can be represented by a language code in lowercase, or a language and country code, with language in lowercase and 
 country in uppercase.
 
-| Locale | Valid                     | 
-|:-------|:--------------------------|
-| it     | :white_check_mark:        |
-| IT_it  | :x:                       |
-| it_IT  | :white_check_mark:        |
-| IT_IT  | :x:                       |
-| it_it  | :x:                       |
-| IT     | :x:    (missing language) |
+| Locale | Valid                              | 
+|:-------|:-----------------------------------|
+| it     | :white_check_mark:                 |
+| IT_it  | :x: not Valid                      |
+| it_IT  | :white_check_mark:                 |
+| IT_IT  | :x: not Valid                      |
+| it_it  | :x: not Valid                      |
+| IT     | :x:    (missing language)          |
 
 ```java
 Local wrong_enUS = new Locale("en_US"));  //wrong way to load
